@@ -20,7 +20,7 @@ TRUSTED_FIRMWARE_BUILD="release"
 # https://github.com/longsleep/sunxi-pack-tools
 SUNXI_PACK_TOOLS="../sunxi-pack-tools/bin"
 
-BUILD="build"
+BUILD="../build"
 mkdir -p $BUILD
 
 cp -avf $TRUSTED_FIRMWARE/build/sun50iw1p1/$TRUSTED_FIRMWARE_BUILD/bl31.bin $BUILD
@@ -39,7 +39,7 @@ $SUNXI_PACK_TOOLS/merge_uboot $BUILD/u-boot.bin $BUILD/bl31.bin $BUILD/u-boot-me
 $SUNXI_PACK_TOOLS/merge_uboot $BUILD/u-boot-merged.bin $BUILD/scp.bin $BUILD/u-boot-merged2.bin scp
 
 # update_fdt.exe u-boot.bin xxx.dtb output_file.bin
-$SUNXI_PACK_TOOLS/update_uboot_fdt $BUILD/u-boot-merged2.bin $BUILD/a64-olinuxino.dtb $BUILD/u-boot-with-dtb.bin
+$SUNXI_PACK_TOOLS/update_uboot_fdt $BUILD/u-boot-merged2.bin $BUILD/a64-teres.dtb $BUILD/u-boot-with-dtb.bin
 
 # Add fex file to u-boot so it actually is accepted by boot0.
 $SUNXI_PACK_TOOLS/update_uboot $BUILD/u-boot-with-dtb.bin $BUILD/sys_config.bin
