@@ -33,7 +33,7 @@ make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- -j4 LOCALVERSION= modules_insta
 ```
 #### U-Boot
 ```bash
-cd ../u-boot-a64/
+cd ../u-boot/
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- sun50iw1p1_config
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf-
 ```
@@ -49,4 +49,7 @@ cd ../
 make -C sunxi-pack-tools
 ```
 ### 4. Helper Scripts
-
+'''bash
+cd scripts/
+chmod +x pack_uboot.sh
+./pack_uboot.sh
