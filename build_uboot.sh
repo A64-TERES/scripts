@@ -45,5 +45,5 @@ $SUNXI_PACK_TOOLS/merge_uboot $BUILD/u-boot-sun50iw1p1-secure-with-teres-dtb.bin
 $SUNXI_PACK_TOOLS/update_uboot_fdt $BUILD/u-boot-sun50iw1p1-secure-with-teres-dtb.bin.tmp2 $BUILD/a64-teres_uboot.dtb $BUILD/u-boot-sun50iw1p1-secure-with-teres-dtb.bin.tmp3
 $SUNXI_PACK_TOOLS/update_uboot $BUILD/u-boot-sun50iw1p1-secure-with-teres-dtb.bin.tmp3 $BUILD/sys_config_uboot.bin
 mv $BUILD/u-boot-sun50iw1p1-secure-with-teres-dtb.bin.tmp3 $BUILD/u-boot-sun50iw1p1-secure-with-teres-dtb.bin
-echo "Done - created $BUILD/u-boot-with-dtb.bin"
+echo "Done - created $BUILD/u-boot-sun50iw1p1-secure-with-teres-dtb.bin"
 
