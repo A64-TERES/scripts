@@ -12,7 +12,7 @@ set -e
 
 # Blobs as provided in the BSP
 BLOBS="../blobs"
-UBOOT="../u-boot"
+UBOOT="../u-boot_new"
 TRUSTED_FIRMWARE="../arm-trusted-firmware-a64"
 TRUSTED_FIRMWARE_BUILD="release"
 SUNXI_PACK_TOOLS="../sunxi-pack-tools/bin"
