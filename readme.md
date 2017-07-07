@@ -31,15 +31,6 @@ make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- -j4 LOCALVERSION= Image
 make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- -j4 LOCALVERSION= modules
 make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- -j4 LOCALVERSION= modules_install  INSTALL_MOD_PATH=out INSTALL_MOD_STRIP=1
 ```
-#### U-Boot
-```bash
-cd ../scripts/
-./build_uboot.sh #A64-Teres
-```
-or 
-```bash
-./build_uboot_a64.sh #A64-OLinuXino
-```
 #### ATF
 ```bash
 cd ../arm-trusted-firmware-a64/
@@ -50,6 +41,15 @@ make ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- PLAT=sun50iw1p1 bl31
 ```bash
 cd ../
 make -C sunxi-pack-tools
+```
+#### U-Boot
+```bash
+cd ../scripts/
+./build_uboot.sh #A64-Teres
+```
+or 
+```bash
+./build_uboot_a64.sh #A64-OLinuXino
 ```
 ### 4. Helper Scripts
 
