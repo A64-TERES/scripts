@@ -44,7 +44,7 @@ make -C sunxi-pack-tools
 ```
 #### U-Boot
 ```bash
-cd ../scripts/
+cd scripts/
 ./build_uboot.sh #A64-Teres
 ```
 or 
