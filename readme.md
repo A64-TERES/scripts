@@ -60,6 +60,7 @@ Make sure the initrd is for aarch64.
 ### Get Busybox tree
 
 ```bash
+cd ../
 git clone --depth 1 --branch 1_24_stable --single-branch git://git.busybox.net/busybox busybox
 ```
 
