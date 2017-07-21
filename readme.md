@@ -52,4 +52,28 @@ or
 ./build_uboot_a64.sh #A64-OLinuXino
 ```
 ### 4. Helper Scripts
+## Ramdisk
 
+Either make one with the steps below or download one from some other place.
+Make sure the initrd is for aarch64.
+
+### Get Busybox tree
+
+```bash
+git clone --depth 1 --branch 1_24_stable --single-branch git://git.busybox.net/busybox busybox
+```
+
+### Configure and build Busybox
+
+Build a static busybox for aarch64. Start by copying the `pine64_config_busybox`
+file to `.config` of your Busybox folder.
+
+```bash
+make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- -j4 oldconfig
+make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- -j4
+```
+
+### Make initrd.gz
+
+Use the provided `make_initrd.sh` script to create a simple initrd based on
+the busybox binary compiled earlier.
