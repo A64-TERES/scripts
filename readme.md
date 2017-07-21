@@ -65,7 +65,7 @@ git clone --depth 1 --branch 1_24_stable --single-branch git://git.busybox.net/b
 
 ### Configure and build Busybox
 
-Build a static busybox for aarch64. Start by copying the `pine64_config_busybox`
+Build a static busybox for aarch64. Start by copying the `blobs/a64_config_busybox`
 file to `.config` of your Busybox folder.
 
 ```bash
