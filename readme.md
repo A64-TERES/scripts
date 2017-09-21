@@ -78,3 +78,7 @@ make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- -j4
 
 Use the provided `make_initrd.sh` script to create a simple initrd based on
 the busybox binary compiled earlier.
+
+### Create bootable image
+Use   `make_simpleimage.sh` and `make_rootfs.sh` to create suitable boot image.
+
