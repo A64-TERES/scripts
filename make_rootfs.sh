@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 #
 # Simple script to create a rootfs for aarch64 platforms including support
 # for Kernel modules created by the rest of the scripting found in this
@@ -293,6 +293,8 @@ EOF
 				zram-config \
 				ubuntu-minimal \
 				sunxi-disp-tool \
+				network-manager \
+				wireless-tools	\
 			"
 		elif [ "$DISTRO" = "sid" -o "$DISTRO" = "jessie" ]; then
 			DEB=debian
@@ -347,7 +349,7 @@ EOF
 		add_udev_rules
 		add_modprobe_d
 		add_modules_load_d
-		add_firstboot_d
+		#add_firstboot_d
 		add_asound_state
 		sed -i 's|After=rc.local.service|#\0|;' "$DEST/lib/systemd/system/serial-getty@.service"
 		rm -f "$DEST/second-phase"
@@ -368,25 +370,25 @@ cp -a ./configuration-files/fstab "$DEST/etc/fstab"
 chown root.root "$DEST/etc/fstab"
 
 # Direct Kernel install
-if [ -n "$LINUX" -a "$LINUX" != "-" -a -d "$LINUX" ]; then
-	# NOTE(longsleep): Passing Kernel as folder is deprecated. Pass a tarball!
-
-	mkdir "$DEST/lib/modules"
-	# Install Kernel modules
-	make -C $LINUX ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- modules_install INSTALL_MOD_PATH="$DEST"
-	# Install Kernel firmware
-	make -C $LINUX ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- firmware_install INSTALL_MOD_PATH="$DEST"
-	# Install Kernel headers
-	make -C $LINUX ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- headers_install INSTALL_HDR_PATH="$DEST/usr"
-
-	# Install extra mali module if found in Kernel tree.
-	if [ -e $LINUX/modules/gpu/mali400/kernel_mode/driver/src/devicedrv/mali/mali.ko ]; then
-		v=$(ls $DEST/lib/modules/)
-		mkdir "$DEST/lib/modules/$v/kernel/extramodules"
-		cp -v $LINUX/modules/gpu/mali400/kernel_mode/driver/src/devicedrv/mali/mali.ko $DEST/lib/modules/$v/kernel/extramodules
-		depmod -b $DEST $v
-	fi
-elif [ -n "$LINUX" -a "$LINUX" != "-" ]; then
+#if [ -n "$LINUX" -a "$LINUX" != "-" -a -d "$LINUX" ]; then
+#	# NOTE(longsleep): Passing Kernel as folder is deprecated. Pass a tarball!
+#
+#	mkdir "$DEST/lib/modules"
+#	# Install Kernel modules
+#	make -C $LINUX ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- modules_install INSTALL_MOD_PATH="$DEST"
+#	# Install Kernel firmware
+#	make -C $LINUX ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- firmware_install INSTALL_MOD_PATH="$DEST"
+#	# Install Kernel headers
+#	make -C $LINUX ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- headers_install INSTALL_HDR_PATH="$DEST/usr"
+#
+#	# Install extra mali module if found in Kernel tree.
+#	if [ -e $LINUX/modules/gpu/mali400/kernel_mode/driver/src/devicedrv/mali/mali.ko ]; then
+#		v=$(ls $DEST/lib/modules/)
+#		mkdir "$DEST/lib/modules/$v/kernel/extramodules"
+#		cp -v $LINUX/modules/gpu/mali400/kernel_mode/driver/src/devicedrv/mali/mali.ko $DEST/lib/modules/$v/kernel/extramodules
+#		depmod -b $DEST $v
+#	fi
+if [ -n "$LINUX" -a "$LINUX" != "-" ]; then
 	# Install Kernel modules from tarball
 	mkdir $TEMP/kernel
 	tar -C $TEMP/kernel --numeric-owner -xJf "$LINUX"
