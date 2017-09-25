@@ -214,7 +214,6 @@ add_prebuilt_packages() {
 add_asound_state() {
 	mkdir -p "$DEST/var/lib/alsa"
 	cp -vf ../blobs/asound.state "$DEST/var/lib/alsa/asound.state"
-	cp -vf ./prebuilt/home/teres1-ledctrl_0.1-1_arm64.deb "$DEST/."
 }
 
 add_debian_apt_sources() {
@@ -395,6 +394,7 @@ chown root.root "$DEST/etc/fstab"
 #		cp -v $LINUX/modules/gpu/mali400/kernel_mode/driver/src/devicedrv/mali/mali.ko $DEST/lib/modules/$v/kernel/extramodules
 #		depmod -b $DEST $v
 #	fi
+echo "-----------------------------------------------------------------------------------------------------------------------------------"
 if [ -n "$LINUX" -a "$LINUX" != "-" ]; then
 	# Install Kernel modules from tarball
 	mkdir $TEMP/kernel
