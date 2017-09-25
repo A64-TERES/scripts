@@ -201,7 +201,7 @@ add_modules_load_d() {
 }
 add_prebuilt_packages() {
 	mkdir -p "$DEST/home/prebuilt"
-	cp -av   ./prebuilt/* "$DEST/."
+	cp -av   ./prebuilt/* "$DEST/home/prebuilt/"
 }
 
 #add_firstboot_d() {
@@ -312,6 +312,7 @@ EOF
 			exit 2
 		fi
 		add_${DEB}_apt_sources $DISTRO
+		add_prebuilt_packages
 		cat > "$DEST/second-phase" <<EOF
 #!/bin/sh
 set -ex
@@ -324,7 +325,7 @@ apt-get -y remove --purge ureadahead
 apt-get -y update
 adduser --gecos $DEBUSER --disabled-login $DEBUSER --uid 1000
 chown -R 1000:1000 /home/$DEBUSER
-dpkg -i /home/teres1-ledctrl_0.1-1_arm64.deb
+dpkg -i /home/prebuilt/*
 echo "$DEBUSER:$DEBUSERPW" | chpasswd
 usermod -a -G sudo,adm,input,video,plugdev $DEBUSER
 apt-get -y autoremove
