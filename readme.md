@@ -18,6 +18,7 @@ git clone https://github.com/A64-TERES/scripts
 ```bash
 	sudo apt install gcc-aarch64-linux-gnu
         sudo apt install gcc-4.7-arm-linux-gnueabihf
+	sudo apt install kpartx bsdtar
 ```
 
 ### 3. Cross-compile sources
