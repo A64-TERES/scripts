@@ -45,6 +45,6 @@ fi
 VERSION="$(ls -1tr $TEMP/lib/modules/|tail -n1)-$EXTRAVERSION"
 
 echo "Building $VERSION ..."
-tar -C "$TEMP" -cJ --owner=0 --group=0 --xform='s,./,,' -f "$DEST/linux-a64-$VERSION.tar.xz" .
+tar -C "$TEMP" -cJv --owner=0 --group=0 --xform='s,./,,' -f "$DEST/linux-a64-$VERSION.tar.xz" .
 
 echo "Done - $DEST/linux-a64-$VERSION.tar.xz"
