@@ -70,6 +70,8 @@ Build a static busybox for aarch64. Start by copying the `blobs/a64_config_busyb
 file to `.config` of your Busybox folder.
 
 ```bash
+cp blobs/a64_config_busybox busybox/.config
+cd busybox 
 make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- -j4 oldconfig
 make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- -j4
 ```
@@ -79,6 +81,45 @@ make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- -j4
 Use the provided `make_initrd.sh` script to create a simple initrd based on
 the busybox binary compiled earlier.
 
+```bash
+cd ../scripts
+./make_initrd.sh
+```
 ### Create bootable image
-Use   `make_simpleimage.sh` and `make_rootfs.sh` to create suitable boot image.
 
+Create kernel tarball :
+```bash 
+./make_kernel_tarball.sh . ../linux-a64 #This will produce file named linux-a64-xx.yy.zz.tar.xz 
+```
+
+Create simple image structure :
+```bash
+./make_simpleimage.sh teres.img 1000 
+xz teres.img
+```
+
+Build bootable image :
+```bash
+./build_image.sh <image name>.img.xz <path to kernel tarball> xenial
+```
+
+if everything is successfully acomplished this command will create file named :
+xenial-teres-bspkernel-<date>.img
+use dd to write this image to Sd Card : 
+```bash
+dd if=xenial-teres-bspkernel-<date>.img of=/dev/sdX bs=1M
+```
+
+After first boot you will able to login with : 
+user: olimex
+pass: olimex
+
+Connection to internet can be enabled using nmtui tool:
+```bash
+nmtui
+```
+
+Feel free to install everything you want, for ex. Graphical desktop : 
+```bash
+./install_desktop.sh mate #will install mate 
+```
