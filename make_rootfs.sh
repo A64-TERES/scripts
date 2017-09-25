@@ -199,6 +199,10 @@ add_modules_load_d() {
 	cp -av ./configuration-files/modules-load.d/* "$DEST/etc/modules-load.d/"
 	chown -R root.root "$DEST/etc/modules-load.d"
 }
+add_prebuilt_packages() {
+	mkdir -p "$DEST/home/prebuilt"
+	cp -av   ./prebuilt/* "$DEST/."
+}
 
 #add_firstboot_d() {
 #	# Install firstboot scripts.
@@ -210,6 +214,7 @@ add_modules_load_d() {
 add_asound_state() {
 	mkdir -p "$DEST/var/lib/alsa"
 	cp -vf ../blobs/asound.state "$DEST/var/lib/alsa/asound.state"
+	cp -vf ./prebuilt/home/teres1-ledctrl_0.1-1_arm64.deb "$DEST/."
 }
 
 add_debian_apt_sources() {
@@ -319,6 +324,7 @@ apt-get -y remove --purge ureadahead
 apt-get -y update
 adduser --gecos $DEBUSER --disabled-login $DEBUSER --uid 1000
 chown -R 1000:1000 /home/$DEBUSER
+dpkg -i /home/teres1-ledctrl_0.1-1_arm64.deb
 echo "$DEBUSER:$DEBUSERPW" | chpasswd
 usermod -a -G sudo,adm,input,video,plugdev $DEBUSER
 apt-get -y autoremove
