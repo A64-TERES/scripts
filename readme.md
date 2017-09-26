@@ -101,7 +101,7 @@ xz teres.img
 
 Build bootable image :
 ```bash
-./build_image.sh <image name>.img.xz <path to kernel tarball> xenial
+./build_image.sh teres.img.xz ./linux-a64-3.10.104-1.tar.xz xenial
 ```
 
 if everything is successfully acomplished this command will create file named :

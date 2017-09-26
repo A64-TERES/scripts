@@ -287,8 +287,8 @@ EOF
 		cp /etc/resolv.conf "$DEST/etc/resolv.conf"
 		if [ "$DISTRO" = "xenial" ]; then
 			DEB=ubuntu
-			DEBUSER=ubuntu
-			DEBUSERPW=ubuntu
+			DEBUSER=olimex
+			DEBUSERPW=olimex
 			ADDPPACMD="apt-get -y update && \
 				apt-get install -y software-properties-common && \
 				apt-add-repository -y ppa:longsleep/ubuntu-pine64-flavour-makers \
