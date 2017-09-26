@@ -95,7 +95,7 @@ Create kernel tarball :
 
 Create simple image structure :
 ```bash
-./make_simpleimage.sh teres.img 1000 
+./make_simpleimage.sh teres.img 1000 ./linux-a64-3.10.104-1.tar.xz 
 xz teres.img
 ```
 
