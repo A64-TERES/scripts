@@ -31,6 +31,11 @@ if [ -z "$out" ]; then
 	exit 1
 fi
 
+if [ "$(id -u)" -ne "0" ]; then
+	echo "This script requires root."
+	exit 1
+fi
+
 if [ -z "$disk_size" ]; then
 	disk_size=100 #MiB
 fi
