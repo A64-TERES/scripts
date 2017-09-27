@@ -95,13 +95,13 @@ Create kernel tarball :
 
 Create simple image structure :
 ```bash
-./make_simpleimage.sh teres.img 1000 ./linux-a64-3.10.104-1.tar.xz 
+sudo ./make_simpleimage.sh teres.img 1000 ./linux-a64-3.10.104-1.tar.xz 
 xz teres.img
 ```
 
 Build bootable image :
 ```bash
-./build_image.sh teres.img.xz ./linux-a64-3.10.104-1.tar.xz xenial
+sudo ./build_image.sh teres.img.xz ./linux-a64-3.10.104-1.tar.xz xenial
 ```
 
 if everything is successfully acomplished this command will create file named :
