@@ -216,6 +216,10 @@ add_asound_state() {
 	cp -vf ../blobs/asound.state "$DEST/var/lib/alsa/asound.state"
 }
 
+add_keymaps() {
+	cp -vf ../blobs/teres_kmap.hwdb "$DEST/etc/udev/hwdb.d/teres_kmap.hwdb"
+}
+
 add_debian_apt_sources() {
 	local release="$1"
 	local aptsrcfile="$DEST/etc/apt/sources.list"
