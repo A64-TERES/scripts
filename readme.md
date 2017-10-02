@@ -96,7 +96,7 @@ Create kernel tarball :
 Create simple image structure :
 ```bash
 sudo ./make_simpleimage.sh teres.img 1000 ./linux-a64-3.10.104-1.tar.xz 
-xz teres.img
+sudo xz teres.img
 ```
 
 Build bootable image :
