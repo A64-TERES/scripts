@@ -39,6 +39,8 @@ case $DESKTOP in
 			ubuntu-mate-desktop
 			ubuntu-mate-lightdm-theme
 			ubuntu-mate-wallpapers-xenial
+			smplayer
+			mplayer
 			lightdm
 		)
 		;;
