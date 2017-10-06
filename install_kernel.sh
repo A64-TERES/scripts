@@ -86,6 +86,7 @@ echo " OK"
 if [ ! -e "$DEST/uEnv.txt" ]; then
 	cat <<EOF > "$DEST/uEnv.txt"
 root=/dev/mmcblk1p2
+debug=off
 console=tty0 console=ttyS0,115200n8 no_console_suspend
 kernel_filename=$KERNEL
 initrd_filename=$INITRD_IMG
