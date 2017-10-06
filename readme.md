@@ -122,5 +122,5 @@ nmtui
 
 Feel free to install everything you want, for ex. Graphical desktop : 
 ```bash
-./install_desktop.sh mate #will install mate 
+sudo install_desktop.sh mate #will install mate 
 ```
