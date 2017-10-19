@@ -299,11 +299,14 @@ EOF
 				sunxi-disp-tool \
 				network-manager \
 				wireless-tools	\
+				device-tree-compiler \
+				dialog	\
+				rsync \
 			"
 		elif [ "$DISTRO" = "sid" -o "$DISTRO" = "jessie" ]; then
 			DEB=debian
-			DEBUSER=debian
-			DEBUSERPW=debian
+			DEBUSER=olimex
+			DEBUSERPW=olimex
 			ADDPPACMD=""
 			EXTRADEBS="sudo"
 		else
